@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'web4.css' %}">
+  <SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+  </SCRIPT>
+  <script>
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
+  <style>
+    #x,
+    #b,
+    #li {
+      color: black;
+    }
+
+    #li {
+      font-size: 0.99rem !important;
+    }
+
+    #li:hover {
+      text-decoration: none;
+    }
+
+    tr,
+    td {
+      padding: 10px;
+    }
+
+    .qw:hover {
+      color: #9b9b9b !important;
+    }
+
+    #v1 {
+      width: 37% !important;
+      float: left;
+      margin-left: 230px !important;
+    }
+
+    .qw {
+      font-size: 20px !important;
+      margin-left: 16px !important;
+    }
+
+    #gg {
+      color: #212529;
+    }
+
+    .f1 {
+      font-size: 1.5rem !important;
+      font-weight: 700 !important;
+    }
+
+    .f2 {
+      font-size: 20px !important;
+      font-weight: 640 !important;
+      line-height: 16px !important;
+    }
+    #er{
+      width: 40px !important;
+      height: 40px !important;
+    }
+  </style>
+</head>
+
+<body onload="noBack();" 
+onpageshow="if (event.persisted) noBack();" onunload="" >
+
+  <div class=" container-fluid">
+    <div id="c">
+      <div id="a"><a href="tel:+91997914292" style="letter-spacing: 0px;"><span class=" fa fa-phone" id="b"></span>
+        </a><label style="color: black;"> +91 9979714292 </label> </div>
+      <div id="a"><a href="mailto: harshtech2000@gmail.com" id="" style="letter-spacing:0px;"><span
+            class=" fa fa-envelope" id="b"></span></a> <label style="color: black;"> harshtech2000@gmail.com </label>
+      </div>
+    </div>
+  </div>
+  <p>
+    <hr>
+  </p>
+
+  <div class=" container-fluid" style="width: 100%;padding:0px;">
+    <div style="float: left;width: 200px;" id="e">
+      <label style="" id="gg" class="f1">FASHION SHOP</label>
+      <label style="" id="gg" class="f2">Boutique</label>
+    </div>
+
+    <ul class=" nav" id="v1">
+      <li class=" nav-item" class="harsh"><a class="nav-link" href="{% url 'seller_home' %}" id="li" >HOME</a></li>
+      <li class=" nav-item"><a class=" nav-link" href="{% url 'seller_add_product' %}" id="li"> ADD PRODUCT</a></li>
+      <li class=" nav-item"><a class=" nav-link" href="{% url 'seller_view_product' %}" id="li"> VIEW PRODUCT</a></li>
+      <li class=" nav-item"><a class=" nav-link" href="#" id="li">MY ORDERS</a></li>
+
+
+    </ul>
+
+    {% if request.session.email %}
+    <label id="icon" style="margin-left:0px;float:right;margin-right:10px">
+
+      <a href="{% url 'logout' %}" style="letter-spacing: 0.5px;margin-top: -1px;" id="x" class="qw po"><span
+          class="fa fa-sign-out">Logout,{{request.session.fname}}&nbsp;<img src="{{request.session.image}}" width="40px"  height="40px" style="border-radius: 7px;" id="er"></span></a>
+      <a href="{% url 'seller_change_password' %}" style="letter-spacing: 0.5px;margin-top: 3px;" id="x"
+        class="qw"><span class="fa fa-pencil-square-o">Change Password</span></a>
+      <a href="{% url 'seller_edit_profile' %}" style="letter-spacing: 0.5px;margin-top: 3px;" id="x" class="qw"><span
+          class="fa fa-pencil-square-o">Edit Profile</span></a>
+    </label>
+    <style>
+      #v1 {
+        margin-left: 97px !important;
+      }
+    </style>
+    {% else %}
+    <label id="icon">
+      <a href="{% url 'login' %}" onclick="submit1()"><span class=" fa fa-user xx" id="x"></span></a>
+      <a href="#"> <span class="fa fa-search " id="x"></span></a>
+      <a href="#"><span class="fa fa-shopping-bag " id="x"></span></a>
+    </label>
+    {% endif %}
+    <div>
+      <ul class=" flex-column  bg-light collapse" id="v2" style="margin: 0px;">
+        <li class=" nav-item"><a class=" nav-link" href="{% url 'index' %}" id="ap"> HOME</a></li>
+        <li class=" nav-item">
+          <div class="dropdown" style="margin: 8px 16px;">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 100px;">
+              SHOP
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">FOR MEN</a>
+              <a class="dropdown-item" href="#">FOR FEMALE</a>
+              <a class="dropdown-item" href="#">FOR KIDS</a>
+            </div>
+          </div>
+        </li>
+        <li class=" nav-item" id="ap"><a class=" nav-link" href="#" id="ap"> BLOG</a></li>
+        <li class=" nav-item" id="ap"><a class=" nav-link" href="#" id="ap">ABOUT US</a></li>
+        <li class=" nav-item">
+          <div class="dropdown" style="margin: 8px 16px;">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 100px;">
+              CONTACT US
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="tel:+91 9979714292">+919979714292</a>
+              <a class="dropdown-item" href="tel:+91 9428420948">+919428420948</a>
+              <a class="dropdown-item" href="tel:+91 9099979299">+919099979299</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a href="#v2" data-toggle="collapse" id="a1"> <span class="fa fa-bars fa-3x" id="bar"></span></a>
+
+    </div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>

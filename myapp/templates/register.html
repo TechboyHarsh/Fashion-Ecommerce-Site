@@ -1,0 +1,179 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'style5.css' %}">
+    
+</head>
+<body>
+ <style>
+    body{
+          background-color:white !important;
+      }
+      .jumbotron{
+        background-color:snow;
+        margin-bottom: 0px;
+        padding-bottom: 25px;
+        padding-top: 40px;
+       
+      }
+      h2,#c,.b{
+        color:darkred !important;
+      }
+      #male,#female{
+        position: relative;
+        top: 1.8px;
+      }
+      #user,#seller{
+        position: relative;
+        top: 2.5px;
+      } 
+ </style>
+<div class=" container" style="margin-top: 5%;">
+      
+  
+      <center>
+        
+
+      <div class=" jumbotron">
+        
+      <h2>Sign Up</h2><br>
+      {% if msg %}
+      <label style="color:darkred"> {{msg}}</label><br><br>
+      {% endif %}
+      <form action="{% url 'register' %}" name="signup" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+        
+         <div class=" input-group form-group">
+          <div class=" input-group-prepend">
+              <span class=" input-group-text fa fa-user-circle">&nbsp;&nbsp;<label for="">User</label>&nbsp;&nbsp;<input type="radio" name="usertype" id="user" value="user" style="text-align: center;"></span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span class=" input-group-text fa fa-user-circle">&nbsp;&nbsp;<label for="">Seller</label>&nbsp;&nbsp;<input type="radio" name="usertype" id="seller" value="seller"></span>
+          </div>
+        </div>
+      <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-user"></span>
+            </div>
+          
+         
+            <input type="text" name="fname"  placeholder="First Name *" class=" form-control" autocomplete="off">
+            
+          </div>
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-user"></span>
+            </div>
+            <input type="text" name="lname" id="" class=" form-control" placeholder="Last Name *" autocomplete="off">
+            
+          </div>
+      
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-inbox"></span>
+            </div>
+          
+         
+            <input type="text" name="email" id="" class=" form-control" placeholder="Email *" autocomplete="off">
+            
+          </div>
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-phone"></span>
+            </div>
+          
+         
+            <input type="text" name="mobile" id="" class=" form-control" placeholder="Mobile *" autocomplete="off">
+            
+          </div>
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-male">&nbsp;&nbsp;<label for="">Male</label>&nbsp;&nbsp;<input type="radio" name="gender" id="male" value="male" style="text-align: center;"></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class=" input-group-text fa fa-female">&nbsp;&nbsp;<label for="">Female</label>&nbsp;&nbsp;<input type="radio" name="gender" id="female" value="female"></span>
+                
+            </div>
+            
+          </div>
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-address-card" align="center" style="padding-top: 130%;" ></span>
+            </div>
+            
+         
+            <textarea rows="5" cols="22" name="address" id="" class=" form-control" placeholder="Address *" autocomplete="off"></textarea>
+            
+          </div>
+          
+          <div class=" input-group form-group">
+          <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-lock" ></span>
+            </div>
+          
+<input type="password" name="password" class=" form-control" placeholder="Password *" autocomplete="off">
+          </div>
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-lock"></span>
+            </div>
+          
+         
+            <input type="password" name="cpassword" id="" class=" form-control" placeholder="Confirm Password *" autocomplete="off">
+            
+          </div>
+         <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                
+            </div>
+          
+         
+            <input type="file" id="upload"  name="image"  hidden/>
+            <label for="upload" 
+            style="
+                display: inline-block;
+                background-color: #dc3445;
+                color:#fff;
+                padding: 0.5rem;
+                font-family: sans-serif;
+                border-radius: 0.3rem;
+                cursor: pointer;
+                border-radius: 5px;
+              "
+            >
+            Choose Image</label>
+            
+          </div> 
+          <div class=" form-group ">
+            <input type="submit" value="Register" class=" btn btn-danger"  >
+           
+             <button type="Reset" value="reset" class=" btn btn-danger" style="margin-left: 12px;" >Reset</button>
+           
+          </div>
+      </form>
+          <div class=" form-group">
+           <b> <label id="c" style="letter-spacing: 0.3px;">Already Have An Account</label></b><br>
+            <a href="{% url 'login' %}" class="b text-info" style="letter-spacing: 0.7px;">Login Here</a>
+          </div>
+
+        </div> 
+      </div>
+       
+      </center>
+  
+    
+</div>
+   
+  
+</body>
+</html>
+{% endblock %}

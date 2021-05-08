@@ -1,0 +1,39 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br><br>
+<div class="container-fluid" style="padding-left: 60px;">
+<div class="row">
+    <br>
+{% for i in products %}
+<br>
+<div class="col-sm-3">
+    <br><br>    
+<div class="card" style="width: 18rem;">
+    <img src="{{i.product_image.url}}" class="card-img-top" alt="..." height="405px">
+    <div class="card-body">
+      <h5 class="card-title">{{i.product_brand}}</h5>
+      <p class="card-text">{{i.product_model}}</p>
+      <a href="{% url 'seller_product_detail' pk=i.pk %}" class="btn btn-primary" style="letter-spacing:0px ;">More Details</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<br>
+</div>
+</div>
+<br><br>
+</body>
+</html>
+
+{% endblock %}

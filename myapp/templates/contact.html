@@ -1,0 +1,64 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h3{
+           margin-left: 7%; 
+        }
+        #p7{
+            margin-left: 70px;
+        }
+        .contact{
+            margin-left: 48%;
+            margin-top: 3%;
+        }
+    </style>
+    <br><br><br>
+    <h2 class="contact">Contact</h2>
+    <label style="color:blue;margin-left: 48%;"  > {{msg}}</label><br>
+    <center>
+    <form action="{% url 'contact' %}" method="post" name="contact">
+         {% csrf_token %}
+        <table>
+            <tr>
+                <td><h6>Name : </h6></td>
+                <td><input type="text" name="name" id=""></td>
+            </tr>
+            <tr>
+                <td><h6>Email : </h6></td>
+                <td><input type="text" name="email" id=""></td>
+            </tr>
+            <tr>
+                <td><h6>Mobile : </h6></td>
+                <td><input type="text" name="mobile" id=""></td>
+            </tr>
+            <tr>
+                <td><h6>Remarks : </h6></td>
+                <td><textarea name="remarks" id="" cols="22" rows="5"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit" id="p7" name="action" class="btn btn-primary">
+                </td>
+            </tr>
+        </table>
+    </form> 
+    </center>
+    {% for i in contacts %}
+        Name : {{i.name}}<br>
+        Remarks : {{i.remarks}}<br>
+        <hr><br>
+    {% endfor %}
+</body>
+</html> 
+{% endblock %}

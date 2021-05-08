@@ -1,0 +1,45 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="container-fluid" style="padding-left: 60px;">
+        <div class="row">
+            <br>
+            <div class="col-sm-3">
+                <br><br>
+                <div class="card" style="width: 19rem;">
+                    <img src="{{product.product_image.url}}" class="card-img-top" alt="..." height="405px">
+                    <div class="card-body" >
+                        <h5 class="card-title">Brand : {{product.product_brand}}</h5>
+                        <p class="card-text"><label style="font-weight: 550;line-height: 0;">Model</label> : {{product.product_model}}</p>
+                        <p class="card-text"  style="text-align: justify;"><label style="font-weight: 550;line-height: 0;">Description</label> : {{product.product_desc}}</p>
+                        <p class="card-text"><label style="font-weight: 550;">Price</label> : ₹{{product.product_price}}</p>
+                        <a href="{% url 'seller_edit_product' pk=product.pk %}" class="btn btn-primary"
+                        style="letter-spacing:0px ;">Edit Product</a>
+                        <a href="{% url 'seller_delete_product' pk=product.pk %}" class="btn btn-primary"
+                        style="letter-spacing:0px ;">Delete Product</a>
+                    </div>
+                </div>
+            </div>
+            
+            <br>
+        </div>
+    </div>
+    <br><br>
+</body>
+
+</html>
+
+{% endblock %}

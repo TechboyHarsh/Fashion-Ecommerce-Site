@@ -1,0 +1,133 @@
+{% extends 'seller_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'style5.css' %}">
+    
+</head>
+<body>
+ <style>
+    body{
+          background-color:white !important;
+      }
+      .jumbotron{
+        background-color:snow;
+        margin-bottom: 0px;
+        padding-bottom: 25px;
+        padding-top: 40px;
+      }
+
+      
+      h2,#c,.b{
+        color:darkred !important;
+      }
+      #male,#female{
+        position: relative;
+        top: 1.8px;
+      }
+      #user,#seller{
+        position: relative;
+        bottom: 2.8px;
+      } 
+      #er{
+      width: 40px !important;
+      height: 40px !important;
+    }
+ </style>
+<div class=" container" >
+      
+  <br><br><br>
+      <center>
+      <div class=" jumbotron">
+        
+      <h2>Edit Product</h2><br>
+      {% if msg %}
+      <label style="color:darkred"> {{msg}}</label><br>
+      {% endif %}
+      <form action="{% url 'seller_edit_product' pk=product.pk %}" name="seller_edit_product" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         <div class=" input-group form-group">
+         
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-product-hunt" style="padding-top: 20%;"></span>
+            </div>
+            <input type="text" name="product_brand"  placeholder="Product Model *" class=" form-control" autocomplete="off" value="{{product.product_brand}}" readonly style="background-color: white !important;">
+        </div>
+      <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-product-hunt" style="padding-top: 20%;"></span>
+            </div>
+          
+         
+            <input type="text" name="product_model"  placeholder="Product Model *" class=" form-control" autocomplete="off" value="{{product.product_model}}">
+            
+          </div>
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-product-hunt" style="padding-top: 20%;"></span>
+            </div>         
+            <input type="text" name="product_price" class=" form-control" placeholder="Product Price *" autocomplete="off" value="{{product.product_price}}">
+            
+          </div>
+      
+          <div class=" input-group form-group">
+            <div class=" input-group-prepend">
+                <span class=" input-group-text fa fa-product-hunt" align="center" style="padding-top: 130%;" ></span>
+            </div>
+            
+         
+            <textarea rows="5" cols="22" name="product_desc"  class=" form-control" placeholder="Product Description *" autocomplete="off">{{product.product_desc}}
+            </textarea>
+          </div>
+          <div class=" input-group form-group" style="margin-top: -11px !important;">
+           
+              <img src="{{product.product_image.url}}"   style="width: 200px;height: 200px !important;">
+          </div>
+
+
+         <div class=" input-group form-group" style="margin-top: 5px !important;">  
+            <input type="file" id="upload" name="product_image"  hidden/>
+            <label for="upload" 
+            style="
+                display: inline-block;
+                background-color: #dc3445;
+                color:#fff;
+                padding: 0.5rem;
+                font-family: sans-serif;
+                border-radius: 0.3rem;
+                cursor: pointer;
+                border-radius: 5px;
+              "
+            >
+            Select New Image</label>
+          </div> <br>
+
+
+          <div class=" form-group ">
+            <input type="submit" value="Edit Product" class=" btn btn-danger"  style="width: 115px !important
+            ;" >
+          </div>
+      </form>
+
+     
+      </div>
+       
+      </center>
+  
+    
+</div>
+   <br><br>
+  
+</body>
+</html>
+{% endblock %}

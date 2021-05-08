@@ -1,0 +1,44 @@
+body{
+    background-color: #100e30;
+position: relative;    
+}
+
+img{
+    top: 2% !important;
+    margin-top: 5%;
+    width: 200px;
+    height: 100px !important;
+}
+
+.jumbotron{
+    width: 600px;
+    height: 400px;
+    margin-top: 2%;
+    text-align: center !important;
+    
+
+}
+
+
+.btn{
+margin-left: 0%;
+width: 100px;
+height: 50px;
+}
+.b{
+    margin-left: 2% !important;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+#c{
+    font-weight: 600;
+}
+
+@media screen and (max-width:750px){
+    .jumbotron{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+}

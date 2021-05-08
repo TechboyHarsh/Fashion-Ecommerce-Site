@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br><br>
+    <center>
+        {% if not carts %}
+            <h3>No items in Cart</h3>
+        {% else %}
+        <h3>Total Item In Cart : {{carts.count}}</h3>
+        {% endif %}
+        <br>
+         
+    </center>
+    
+<div class="container-fluid" style="padding-left: 60px;">
+    
+      <form action="{% url 'pay' %}" name="pay" method="POST" >
+          {% csrf_token %}
+          <h1>Checkout : ₹{{net_price}}
+        <input type="submit" value="Checkout" name="action" class="btn btn-primary btn-lg" style="margin-left: 8px;margin-bottom: 2px;padding-bottom: 10px;">
+    </h1>
+        <input type="hidden" name="amount" value="{{net_price}}" >
+    </form>
+    
+    
+<div class="row">
+    <br>
+{% for i in carts %}
+<br>
+<div class="col-sm-3">
+    <br><br>    
+<div class="card" style="width: 18rem;">
+    <img src="{{i.product.product_image.url}}" class="card-img-top" alt="..." height="405px">
+    <div class="card-body">
+      <h5 class="card-title">Brand : {{i.product.product_brand}}</h5>
+      <p class="card-text"><label style="font-weight: 550;line-height: 0;">Model : </label> {{i.product.product_model}}</p>
+      <p>
+      <form action="{% url 'change_qty' %}" name="change_qty" method="POST" > 
+          {% csrf_token %}
+          <input type="hidden" name="pk" value="{{i.pk}}">
+        <p class="card-text"><label style="font-weight: 550;">Quantity : </label> 
+            <input type="number" name="qty" value="{{i.qty}}" min="1" max="10" onchange="this.form.submit()" >
+        </p> 
+      </form>
+      </p>
+      <p class="card-text"><label style="font-weight: 550;line-height: 0;">Price : </label> {{i.price}}</p>
+      <p class="card-text"><label style="font-weight: 550;line-height: 0;">Price * Quantity : </label> {{i.total_price}}</p>
+      <a href="{% url 'user_product_detail' pid=i.product.pk %}" class="btn btn-primary" style="letter-spacing:0px ;">More Details</a>
+      
+    </div>
+  </div>
+</div>
+{% endfor %}
+<br>
+</div>
+</div>
+<br>
+
+</body>
+</html>
+
+{% endblock %}
